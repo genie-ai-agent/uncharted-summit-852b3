@@ -49,24 +49,6 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ---- rsvp form (client-only, no backend) ----
-  const form = document.getElementById('rsvp-form');
-  const status = document.getElementById('rsvp-status');
-  if (form && status) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const name = (fd.get('name') || '').toString().trim();
-      const email = (fd.get('email') || '').toString().trim();
-      if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        status.textContent = 'A name and a working email, please.';
-        return;
-      }
-      status.textContent = 'Received. The committee will be in touch.';
-      form.reset();
-    });
-  }
-
   // ---- smooth anchor scroll ----
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
